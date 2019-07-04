@@ -4,6 +4,8 @@
 
 A Terraform provider for Algolia.
 
+Only supports creating, updating and deleting API keys for now. It might be extended with support for other resources in the future.
+
 ## Usage instructions
 1. Clone the repository:
 
