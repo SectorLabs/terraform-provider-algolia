@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/algolia/algoliasearch-client-go/algoliasearch"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 

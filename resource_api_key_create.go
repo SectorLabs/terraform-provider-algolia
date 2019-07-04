@@ -1,5 +1,10 @@
 package main
 
+import (
+	"github.com/algolia/algoliasearch-client-go/algoliasearch"
+	"github.com/hashicorp/terraform/helper/schema"
+)
+
 // Creates a new API key
 func resourceAPIKeyCreate(d *schema.ResourceData, m interface{}) error {
 	acl := castStringList(d.Get("acl").([]interface{}))
