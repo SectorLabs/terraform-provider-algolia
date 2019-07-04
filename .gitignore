@@ -3,3 +3,5 @@ terraform-provider-algolia_v0.1
 
 # Ignore temporary Terraform directory used for testing
 .terraform/
+*.tfstate
+*.tfstate.backup

@@ -15,4 +15,7 @@ run: build
 debug_plan: build
 	terraform init && terraform plan
 
+debug_apply: build
+	terraform init && terraform apply
+
 all: build
