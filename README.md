@@ -1,6 +1,7 @@
 # terraform-provider-algolia
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/SectorLabs/terraform-provider-algolia/tree/master.svg?style=svg&circle-token=b7df36916b22d9a96de05df22ee0ec83f2c102fc)](https://circleci.com/gh/SectorLabs/terraform-provider-algolia/tree/master)
 
 A Terraform provider for Algolia.
 
