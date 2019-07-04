@@ -23,5 +23,7 @@ func resourceAPIKeyUpdate(d *schema.ResourceData, m interface{}) error {
 	}
 
 	d.SetId(result.Key)
-	return resourceAPIKeyRead(d, m)
+	d.Set("key", result.Key)
+
+	return nil
 }

@@ -15,5 +15,7 @@ func resourceAPIKeyDelete(d *schema.ResourceData, m interface{}) error {
 	}
 
 	d.SetId("")
+	d.Set("key", "")
+
 	return nil
 }

@@ -16,7 +16,7 @@ func resourceAPIKey() *schema.Resource {
 		// client for Algolia
 		// See: https://www.algolia.com/doc/api-reference/api-methods/add-api-key/
 		Schema: map[string]*schema.Schema{
-			// Required
+			// Required Input
 			"indexes": &schema.Schema{
 				Type: schema.TypeList,
 				Elem: &schema.Schema{
@@ -34,7 +34,7 @@ func resourceAPIKey() *schema.Resource {
 				Description: "List of permissions associated with this key.",
 			},
 
-			// Optional
+			// Optional Input
 			"description": &schema.Schema{
 				Type:        schema.TypeString,
 				Required:    false,
@@ -62,6 +62,13 @@ func resourceAPIKey() *schema.Resource {
 				Optional:    true,
 				Default:     0,
 				Description: "Specify the maximum number of hits this key can retrieve in one call. 0 = unlimited.",
+			},
+
+			// Output
+			"key": &schema.Schema{
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "API key that was created.",
 			},
 		},
 	}
