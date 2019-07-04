@@ -21,11 +21,17 @@ func resourceAPIKey() *schema.Resource {
 				Required: true,
 			},
 			"indexes": &schema.Schema{
-				Type:     schema.TypeList,
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
 				Required: true,
 			},
 			"acl": &schema.Schema{
-				Type:     schema.TypeList,
+				Type: schema.TypeList,
+				Elem: &schema.Schema{
+					Type: schema.TypeString,
+				},
 				Required: true,
 			},
 
@@ -33,21 +39,25 @@ func resourceAPIKey() *schema.Resource {
 			"description": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: false,
+				Optional: true,
 				Default:  "",
 			},
 			"validity": &schema.Schema{
 				Type:     schema.TypeInt,
 				Required: false,
+				Optional: true,
 				Default:  0,
 			},
 			"max_queries_per_ip_per_hour": &schema.Schema{
 				Type:     schema.TypeInt,
 				Required: false,
+				Optional: true,
 				Default:  0,
 			},
 			"max_hits_per_query": &schema.Schema{
 				Type:     schema.TypeInt,
 				Required: false,
+				Optional: true,
 				Default:  0,
 			},
 		},

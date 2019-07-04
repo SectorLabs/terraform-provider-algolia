@@ -7,7 +7,7 @@ import (
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"api_key": resourceAPIKey(),
+			"algolia_api_key": resourceAPIKey(),
 		},
 	}
 }

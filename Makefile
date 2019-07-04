@@ -1,10 +1,18 @@
+provider_name="terraform-provider-algolia"
+provider_version="0.1"
+
+provider_file_name="$(provider_name)_v$(provider_version)"
+
 build:
-	go build -o terraform-provider-algolia_v0.1
+	go build -o $(provider_file_name)
 
 format:
 	go fmt
 
 run: build
-	./terraform-provider-algolia_v0.1
+	./$(provider_file_name)
+
+debug_plan: build
+	terraform init && terraform plan
 
 all: build
