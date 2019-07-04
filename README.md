@@ -9,6 +9,8 @@ Only supports creating, updating and deleting API keys for now. It might be exte
 
 Pre-built binaries for macOS and Linux can downloaded from the [releases page](https://github.com/SectorLabs/terraform-provider-algolia/releases).
 
+Requires at least Go 1.12
+
 ## Usage instructions
 1. Clone the repository:
 
