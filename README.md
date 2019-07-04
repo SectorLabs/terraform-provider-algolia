@@ -1,5 +1,7 @@
 # terraform-provider-algolia
 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+
 A Terraform provider for Algolia.
 
 ## Usage instructions
