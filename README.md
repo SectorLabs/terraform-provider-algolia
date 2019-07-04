@@ -29,5 +29,8 @@ A Terraform provider for Algolia.
     ```
     provider "algolia" {
         version = "~> 0.1"
+
+        application_id = "algolia app id"
+        api_key = "algolia admin api key"
     }
     ```

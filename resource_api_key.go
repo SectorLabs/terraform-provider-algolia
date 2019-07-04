@@ -16,49 +16,51 @@ func resourceAPIKey() *schema.Resource {
 		// See: https://www.algolia.com/doc/api-reference/api-methods/add-api-key/
 		Schema: map[string]*schema.Schema{
 			// Required
-			"name": &schema.Schema{
-				Type:     schema.TypeString,
-				Required: true,
-			},
 			"indexes": &schema.Schema{
 				Type: schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Required: true,
+				Required:    true,
+				Description: "List of target indexes. Supports the wildcard syntax.",
 			},
 			"acl": &schema.Schema{
 				Type: schema.TypeList,
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
 				},
-				Required: true,
+				Required:    true,
+				Description: "List of permissions associated with this key.",
 			},
 
 			// Optional
 			"description": &schema.Schema{
-				Type:     schema.TypeString,
-				Required: false,
-				Optional: true,
-				Default:  "",
+				Type:        schema.TypeString,
+				Required:    false,
+				Optional:    true,
+				Default:     "",
+				Description: "Description of this key. Informative only.",
 			},
 			"validity": &schema.Schema{
-				Type:     schema.TypeInt,
-				Required: false,
-				Optional: true,
-				Default:  0,
+				Type:        schema.TypeInt,
+				Required:    false,
+				Optional:    true,
+				Default:     0,
+				Description: "A Unix timestamp used to define the expiration date of this key.",
 			},
 			"max_queries_per_ip_per_hour": &schema.Schema{
-				Type:     schema.TypeInt,
-				Required: false,
-				Optional: true,
-				Default:  0,
+				Type:        schema.TypeInt,
+				Required:    false,
+				Optional:    true,
+				Default:     0,
+				Description: "Specify the maximum number of API calls allowed from an IP address per hour. 0 = unlimited.",
 			},
 			"max_hits_per_query": &schema.Schema{
-				Type:     schema.TypeInt,
-				Required: false,
-				Optional: true,
-				Default:  0,
+				Type:        schema.TypeInt,
+				Required:    false,
+				Optional:    true,
+				Default:     0,
+				Description: "Specify the maximum number of hits this key can retrieve in one call. 0 = unlimited.",
 			},
 		},
 	}
