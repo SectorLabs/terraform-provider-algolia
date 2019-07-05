@@ -14,7 +14,7 @@ jobs:
                 command: make build
 
             - store_artifacts:
-                path: ./terraform-provider-algolia_v0.1
+                path: ./terraform-provider-algolia_v0.2
 
 workflows:
     version: 2
