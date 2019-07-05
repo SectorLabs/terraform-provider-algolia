@@ -24,7 +24,6 @@ func resourceAPIKeyCreate(d *schema.ResourceData, m interface{}) error {
 	}
 
 	d.SetId(result.Key)
-	d.Set("key", result.Key)
 
-	return nil
+	return resourceAPIKeyRead(d, m)
 }

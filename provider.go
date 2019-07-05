@@ -22,6 +22,9 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"algolia_api_key": resourceAPIKey(),
 		},
+		DataSourcesMap: map[string]*schema.Resource{
+			"algolia_api_key": dataSourceAPIKey(),
+		},
 		ConfigureFunc: providerConfigure,
 	}
 }
