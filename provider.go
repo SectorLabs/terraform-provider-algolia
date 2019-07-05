@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/algolia/algoliasearch-client-go/algoliasearch"
+	"github.com/algolia/algoliasearch-client-go/algolia/search"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -33,6 +33,6 @@ func providerConfigure(data *schema.ResourceData) (interface{}, error) {
 	applicationID := data.Get("application_id").(string)
 	apiKey := data.Get("api_key").(string)
 
-	client := algoliasearch.NewClient(applicationID, apiKey)
-	return &client, nil
+	client := search.NewClient(applicationID, apiKey)
+	return client, nil
 }
