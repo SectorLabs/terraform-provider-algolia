@@ -12,6 +12,10 @@ func resourceAPIKey() *schema.Resource {
 		Update: resourceAPIKeyUpdate,
 		Delete: resourceAPIKeyDelete,
 
+		Importer: &schema.ResourceImporter{
+			State: schema.ImportStatePassthrough,
+		},
+
 		// Naming is according to the names used in the offical Golang
 		// client for Algolia
 		// See: https://www.algolia.com/doc/api-reference/api-methods/add-api-key/
