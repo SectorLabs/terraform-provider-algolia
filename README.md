@@ -11,68 +11,111 @@ Pre-built binaries for macOS and Linux can downloaded from the [releases page](h
 
 Requires at least Go 1.12
 
-## Usage instructions
-1. Clone the repository:
+## Installation 
 
-    ```
-    $ git clone https://github.com/SectorLabs/terraform-provider-algolia.git
-    ```
+- clone the repository:
 
-2. Build the provider:
+```
+$ git clone https://github.com/SectorLabs/terraform-provider-algolia.git
+```
 
-    ```
-    $ make
-    ```
+- build the provider:
 
-3. Move the binary to the Terraform plugins directory:
+```
+$ make
+```
+
+- move the binary to the Terraform plugins directory:
 
     Or, use one of the other supported methods of using custom plugins. See:
     [https://www.terraform.io/docs/extend/how-terraform-works.html#discovery](https://www.terraform.io/docs/extend/how-terraform-works.html#discovery)
 
-    ```
-    $ mv ./terraform-provider-algolia_v0.1 ~/.terraform.d/plugins
-    ```
+```
+$ mv ./terraform-provider-algolia_v0.1 ~/.terraform.d/plugins
+```
 
-4. Use the provider in Terraform:
+## Usage
 
-    ```
+
+### Provider configuration
+
+#### `algolia`
+
+```
     provider "algolia" {
         version = "~> 0.1"
 
         application_id = "algolia app id"
         api_key = "algolia admin api key"
     }
+```
 
+##### Argument Reference
+
+The following arguments are supported:
+
+* `application_id` - (required) The algolia app id to connect to
+* `api_key` - (required) The Admin API key with permissions to manage keys in the app
+
+
+### Data Source Configuration
+
+
+#### `algolia_api_key`
+
+```
+    data "algolia_api_key" "test" {
+        id = "the_key_value"
+    } 
+```
+
+##### Argument Reference
+
+The following arguments are supported:
+
+* `id` - (required) The key value itself 
+    
+### Resources Configuration
+
+#### `algolia_api_key` 
+
+##### Example usage
+
+```
     resource "algolia_api_key" "test" {
-        // Required
-        // List of target indexes. Supports the wildcard syntax.
         indexes = ["my-index-*"]
 
-        // Required
-        // List of permissions for this key
         acl = ["search"]
 
-        // Optional
-        // Description of this key. Informative only.
         description = "my api key name"
 
-        // Optional
-        // A unix timestamp used to define the expiration date
-        // of the key. Default: 0 (never expire).
         validity = 0
 
-        // Optional
-        // Maximum amount of API calls allowed from an IP per hour.
-        // Default: 0 (no limit)
         max_queries_per_ip_per_hour = 0
 
-        // Optional
-        // Maximum amount of hits that can be retrieved with one query.
-        // Default: 0 (no limit)
         max_hits_per_query = 0
     }
 
     output "my_new_api_key" {
         value = algolia_api_key.test.key
     }
-    ```
+```
+
+##### Argument reference
+
+The following arguments are supported:
+
+* `indexes` - (required) List of target indexes. Supports the wildcard syntax.
+* `acl` - (required) List of permissions for this key
+* `description` - (optional) Description of this key. Informative only.
+* `validity`- (optional) A unix timestamp used to define the expiration date of the key. Default: 0 (never expire).
+* `max_queries_per_ip_per_hour` - (optional) Maximum amount of API calls allowed from an IP per hour. Default: 0 (no limit)
+* `max_hits_per_query` - (optional) Maximum amount of hits that can be retrieved with one query. Default: 0 (no limit)
+
+##### Import 
+
+The keys can be imported using the key value itself:
+
+```
+    terraform import algolia_key.test "the_key_value"
+```
