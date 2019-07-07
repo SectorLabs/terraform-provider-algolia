@@ -36,7 +36,6 @@ $ mv ./terraform-provider-algolia_v0.2 ~/.terraform.d/plugins
 
 ## Usage
 
-
 ### Provider configuration
 
 #### `algolia`

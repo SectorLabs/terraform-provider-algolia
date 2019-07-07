@@ -1,5 +1,5 @@
 provider_name="terraform-provider-algolia"
-provider_version="0.1"
+provider_version="0.2"
 
 provider_file_name="$(provider_name)_v$(provider_version)"
 
