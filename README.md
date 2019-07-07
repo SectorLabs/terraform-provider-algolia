@@ -31,7 +31,7 @@ $ make
     [https://www.terraform.io/docs/extend/how-terraform-works.html#discovery](https://www.terraform.io/docs/extend/how-terraform-works.html#discovery)
 
 ```
-$ mv ./terraform-provider-algolia_v0.1 ~/.terraform.d/plugins
+$ mv ./terraform-provider-algolia_v0.2 ~/.terraform.d/plugins
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ $ mv ./terraform-provider-algolia_v0.1 ~/.terraform.d/plugins
 
 ```
     provider "algolia" {
-        version = "~> 0.1"
+        version = "~> 0.2"
 
         application_id = "algolia app id"
         api_key = "algolia admin api key"
