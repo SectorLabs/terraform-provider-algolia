@@ -13,26 +13,26 @@ Requires at least Go 1.12
 
 ## Installation 
 
-- clone the repository:
+- Clone the repository:
 
-```
-$ git clone https://github.com/SectorLabs/terraform-provider-algolia.git
-```
+    ```
+    $ git clone https://github.com/SectorLabs/terraform-provider-algolia.git
+    ```
 
-- build the provider:
+- Build the provider:
 
-```
-$ make
-```
+    ```
+    $ make
+    ```
 
-- move the binary to the Terraform plugins directory:
+- Move the binary to the Terraform plugins directory:
 
     Or, use one of the other supported methods of using custom plugins. See:
     [https://www.terraform.io/docs/extend/how-terraform-works.html#discovery](https://www.terraform.io/docs/extend/how-terraform-works.html#discovery)
 
-```
-$ mv ./terraform-provider-algolia_v0.2 ~/.terraform.d/plugins
-```
+    ```
+    $ mv ./terraform-provider-algolia_v0.2 ~/.terraform.d/plugins
+    ```
 
 ## Usage
 
@@ -40,14 +40,12 @@ $ mv ./terraform-provider-algolia_v0.2 ~/.terraform.d/plugins
 
 #### `algolia`
 
-```
     provider "algolia" {
         version = "~> 0.2"
 
         application_id = "algolia app id"
         api_key = "algolia admin api key"
     }
-```
 
 ##### Argument Reference
 
@@ -62,11 +60,9 @@ The following arguments are supported:
 
 #### `algolia_api_key`
 
-```
     data "algolia_api_key" "test" {
         id = "the_key_value"
     } 
-```
 
 ##### Argument Reference
 
@@ -80,7 +76,6 @@ The following arguments are supported:
 
 ##### Example usage
 
-```
     resource "algolia_api_key" "test" {
         indexes = ["my-index-*"]
 
@@ -98,7 +93,6 @@ The following arguments are supported:
     output "my_new_api_key" {
         value = algolia_api_key.test.key
     }
-```
 
 ##### Argument reference
 
@@ -115,6 +109,4 @@ The following arguments are supported:
 
 The keys can be imported using the key value itself:
 
-```
     terraform import algolia_key.test "the_key_value"
-```
