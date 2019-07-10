@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/hashicorp/terraform/helper/customdiff"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -15,6 +16,8 @@ func resourceAPIKey() *schema.Resource {
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,
 		},
+
+		CustomizeDiff: customdiff.All(),
 
 		// Naming is according to the names used in the offical Golang
 		// client for Algolia
