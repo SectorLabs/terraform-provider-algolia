@@ -1,5 +1,5 @@
 provider_name="terraform-provider-algolia"
-provider_version="0.2"
+provider_version="0.3"
 
 provider_file_name="$(provider_name)_v$(provider_version)"
 
@@ -13,9 +13,9 @@ run: build
 	./$(provider_file_name)
 
 debug_plan: build
-	terraform init && terraform plan
+	TF_LOG=DEBUG terraform init && terraform plan
 
 debug_apply: build
-	terraform init && terraform apply
+	TF_LOG=DEBUG terraform init && terraform apply
 
 all: build
