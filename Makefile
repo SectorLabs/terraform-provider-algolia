@@ -4,7 +4,7 @@ provider_version="0.4"
 provider_file_name="$(provider_name)_v$(provider_version)"
 
 build:
-	go build -o $(provider_file_name)
+	CGO_ENABLED=0 go build -o $(provider_file_name)
 
 format:
 	go fmt
