@@ -1,57 +1,61 @@
-version: 2
+version: 2.1
+
+executors:
+  golang:
+    docker:
+      - image: golang:1.17.5-bullseye
+
+
+commands:
+  build:
+    parameters:
+      os:
+        type: string
+      arch:
+        type: string
+    steps:
+      - checkout
+      - run:
+          name: Install packages
+          command: apt-get update && apt-get install -y make git
+
+      - run:
+          name: Build binary
+          command: GOOS=<< parameters.os >> GOARCH=<< parameters.arch >> make build
+
+      - run:
+          name: Create archive
+          command: tar -czf terraform-provider-algolia_v0.4_<< parameters.os >>_<< parameters.arch >>.tar.gz ./terraform-provider-algolia_v0.4
+
+      - store_artifacts:
+          path: terraform-provider-algolia_v0.4_<< parameters.os >>_<< parameters.arch >>.tar.gz
+
 jobs:
-    build-linux-amd64:
-        docker:
-            - image: golang:1.17.5-bullseye
-        steps:
-            - checkout
-            - run:
-                name: Install packages
-                command: apt-get update && apt-get install -y make git
+  build-linux-amd64:
+    executor: golang
+    steps:
+      - build:
+          os: linux
+          arch: amd64
 
-            - run:
-                name: Build binary
-                command: GOOS=linux GOARCH=amd64 make build
+  build-macos-amd64:
+    executor: golang
+    steps:
+      - build:
+          os: darwin
+          arch: amd64
 
-            - store_artifacts:
-                path: ./terraform-provider-algolia_v0.4
-
-    build-macos-amd64:
-        docker:
-            - image: golang:1.17.5-bullseye
-        steps:
-            - checkout
-            - run:
-                name: Install packages
-                command: apt-get update && apt-get install -y make git
-
-            - run:
-                name: Build binary
-                command: GOOS=darwin GOARCH=amd64 make build
-
-            - store_artifacts:
-                path: ./terraform-provider-algolia_v0.4
-
-    build-macos-arm64:
-        docker:
-            - image: golang:1.17.5-bullseye
-        steps:
-            - checkout
-            - run:
-                name: Install packages
-                command: apt-get update && apt-get install -y make git
-
-            - run:
-                name: Build binary
-                command: GOOS=darwin GOARCH=arm64 make build
-
-            - store_artifacts:
-                path: ./terraform-provider-algolia_v0.4
+  build-macos-arm64:
+    executor: golang
+    steps:
+      - build:
+          os: darwin
+          arch: arm64
 
 workflows:
-    version: 2
-    build:
-        jobs:
-            - build-linux-amd64
-            - build-macos-amd64
-            - build-macos-arm64
+  version: 2
+  build:
+    jobs:
+      - build-linux-amd64
+      - build-macos-amd64
+      - build-macos-arm64
