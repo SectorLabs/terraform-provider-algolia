@@ -2,12 +2,12 @@ version: 2
 jobs:
     build:
         docker:
-            - image: golang:1.12.6-alpine3.9
+            - image: golang:1.17.5-bullseye
         steps:
             - checkout
             - run:
                 name: Install packages
-                command: apk add make git
+                command: apt-get update && apt-get install -y make git
 
             - run:
                 name: Build binary
